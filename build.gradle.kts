@@ -127,7 +127,7 @@ dependencies {
     testImplementation("org.junit.jupiter:junit-jupiter:5.10.0")
     testImplementation("io.mockk:mockk:1.12.5")
 
-    implementation("net.hypixel:mod-api:0.3.1")
+    shadowImpl("net.hypixel:mod-api:0.4.0")
 }
 configurations.getByName("minecraftNamed").dependencies.forEach {
     shot.applyTo(it as HasConfigurableAttributes<*>)

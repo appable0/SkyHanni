@@ -39,6 +39,7 @@ import at.hannibal2.skyhanni.data.MaxwellAPI
 import at.hannibal2.skyhanni.data.MayorAPI
 import at.hannibal2.skyhanni.data.MinecraftData
 import at.hannibal2.skyhanni.data.MiningAPI
+import at.hannibal2.skyhanni.data.ModAPI
 import at.hannibal2.skyhanni.data.OtherInventoryData
 import at.hannibal2.skyhanni.data.OwnInventoryData
 import at.hannibal2.skyhanni.data.PartyAPI
@@ -499,6 +500,8 @@ class SkyHanniMod {
 
         // data
         loadModule(this)
+        loadModule(ModAPI())
+
         loadModule(ChatManager)
         loadModule(PlayerChatManager())
         loadModule(PlayerNameFormatter())
