@@ -4,8 +4,11 @@ import at.hannibal2.skyhanni.events.LorenzToolTipEvent
 import at.hannibal2.skyhanni.features.inventory.chocolatefactory.ChocolateFactoryAPI.profileStorage
 import at.hannibal2.skyhanni.utils.LorenzUtils.round
 import at.hannibal2.skyhanni.utils.NumberUtil.addSeparators
+import at.hannibal2.skyhanni.utils.TimeUtils
+import at.hannibal2.skyhanni.utils.TimeUtils.format
 import net.minecraftforge.fml.common.eventhandler.EventPriority
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
+import kotlin.time.Duration.Companion.seconds
 
 object ChocolateFactoryTooltip {
 
@@ -34,7 +37,8 @@ object ChocolateFactoryTooltip {
         if (upgradeInfo.effectiveCost == null) return
 
         event.toolTip.add("§7Extra: §6${upgradeInfo.extraPerSecond?.round(2) ?: "N/A"} §7choc/s")
-        event.toolTip.add("§7Effective Cost: §6${upgradeInfo.effectiveCost.addSeparators() ?: "N/A"}")
+        event.toolTip.add("§7Payback Period: §b${upgradeInfo.effectiveCost.seconds.format(maxUnits = 2)}")
+        event.toolTip.add("§7Total Payback Period: §b${upgradeInfo.totalPaybackPeriod.format(maxUnits = 2)}")
 
         if (slotIndex == ChocolateFactoryAPI.timeTowerIndex) {
             event.toolTip.add("§7One charge will give: §6${chocPerTimeTower().addSeparators()}")

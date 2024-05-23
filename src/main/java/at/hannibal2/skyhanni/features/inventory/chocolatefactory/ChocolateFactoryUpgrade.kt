@@ -1,6 +1,8 @@
 package at.hannibal2.skyhanni.features.inventory.chocolatefactory
 
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
+import kotlin.time.Duration
+import kotlin.time.Duration.Companion.seconds
 
 data class ChocolateFactoryUpgrade(
     val slotIndex: Int,
@@ -13,7 +15,8 @@ data class ChocolateFactoryUpgrade(
 ) {
     private var chocolateAmountType = ChocolateAmount.CURRENT
     val isMaxed = price == null
-    var canAffordAt: SimpleTimeMark? = null
+    val canAffordAt: SimpleTimeMark
+    val totalPaybackPeriod: Duration
 
     init {
         if (isPrestige) {
@@ -24,6 +27,8 @@ data class ChocolateFactoryUpgrade(
             canAffordIn.isInfinite() -> SimpleTimeMark.farFuture()
             else -> SimpleTimeMark.now() + canAffordIn
         }
+        val timeUntilAffordable = canAffordAt.timeUntil().coerceAtLeast(0.seconds)
+        totalPaybackPeriod = timeUntilAffordable + (effectiveCost ?: 0.0).seconds
     }
 
     fun canAfford(): Boolean {
