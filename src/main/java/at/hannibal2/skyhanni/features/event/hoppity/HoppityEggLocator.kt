@@ -14,7 +14,9 @@ import at.hannibal2.skyhanni.features.inventory.chocolatefactory.ChocolateFactor
 import at.hannibal2.skyhanni.test.GriffinUtils.drawWaypointFilled
 import at.hannibal2.skyhanni.utils.InventoryUtils
 import at.hannibal2.skyhanni.utils.ItemUtils.getInternalName
+import at.hannibal2.skyhanni.utils.LocationUtils.distanceSqToPlayer
 import at.hannibal2.skyhanni.utils.LocationUtils.distanceToPlayer
+import at.hannibal2.skyhanni.utils.LocationUtils.playerEyeLocation
 import at.hannibal2.skyhanni.utils.LorenzColor
 import at.hannibal2.skyhanni.utils.LorenzUtils
 import at.hannibal2.skyhanni.utils.LorenzUtils.round
@@ -76,6 +78,45 @@ object HoppityEggLocator {
         lastParticlePosition = null
     }
 
+    private val eggLocationData
+        get() = ChocolateFactoryAPI.profileStorage?.eggLocationData ?: mutableMapOf()
+
+    fun markNearest(name: String) {
+        val locations = getCurrentIslandEggLocations() ?: return
+        val closest = locations.minByOrNull { it.distanceSqToPlayer() } ?: return
+        eggLocationData.getOrPut(LorenzUtils.skyBlockIsland) { mutableMapOf() }
+
+        eggLocationData[LorenzUtils.skyBlockIsland]?.let {
+            it[closest] = name
+        }
+    }
+
+    @SubscribeEvent
+    fun onDebug(event: DebugDataCollectEvent) {
+        event.title("Hoppity Eggs")
+        val str = eggLocationData.toList().map {(island, locations) ->
+            val loc = locations.toList().joinToString(",", "{", "}") {
+                    (vec, str) -> "$str: $vec"
+                }
+            "$island: $loc"
+        }
+        event.addData(str)
+    }
+
+    @SubscribeEvent
+    fun onRenderWorldEvenMore(event: LorenzRenderWorldEvent) {
+        val islandEggsLocations = getCurrentIslandEggLocations() ?: return
+        val islandData = eggLocationData.getOrPut(LorenzUtils.skyBlockIsland) { mutableMapOf() }
+        for (eggLocation in islandEggsLocations) {
+            val customName = islandData[eggLocation]
+            val color = if (customName != null) LorenzColor.GREEN else LorenzColor.RED
+            event.drawColor(eggLocation, color, true)
+            if (customName != null) {
+                event.drawDynamicText(eggLocation.add(y = 1), customName, 1.5)
+            }
+        }
+    }
+
     @SubscribeEvent
     fun onRenderWorld(event: LorenzRenderWorldEvent) {
         if (!isEnabled()) return
@@ -104,6 +145,7 @@ object HoppityEggLocator {
         }
 
         event.drawDuplicateEggs(islandEggsLocations)
+        event.exactPlayerEyeLocation()
     }
 
     private fun LorenzRenderWorldEvent.drawGuessLocations() {

@@ -137,6 +137,9 @@ public class ProfileSpecificStorage {
 
         @Expose
         public Integer hoppityShopYearOpened = null;
+
+        @Expose
+        public Map<IslandType, Map<LorenzVec, String>> eggLocationData = new HashMap();
     }
 
     @Expose
