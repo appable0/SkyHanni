@@ -95,8 +95,9 @@ object HoppityEggLocator {
     fun onDebug(event: DebugDataCollectEvent) {
         event.title("Hoppity Eggs")
         val str = eggLocationData.toList().map {(island, locations) ->
-            val loc = locations.toList().joinToString(",", "{", "}") {
-                    (vec, str) -> "$str: $vec"
+            val loc = locations.toList().joinToString(",", "{", "}") { (vec, str) ->
+                val vecStr = "${vec.x.toInt()}:${vec.y.toInt()}:${vec.z.toInt()}"
+                    "\"$str\":\"$vecStr\""
                 }
             "$island: $loc"
         }
