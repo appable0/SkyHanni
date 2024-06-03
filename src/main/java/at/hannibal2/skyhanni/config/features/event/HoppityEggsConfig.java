@@ -63,7 +63,7 @@ public class HoppityEggsConfig {
     public boolean showClaimedEggs = false;
 
     @Expose
-    @ConfigOption(name = "Show Collected Locations", desc = "Shows the number of found egg locations on this island. §eThis is not retroactive and may not be fully synced with Hypixel's count.")
+    @ConfigOption(name = "Show Collected Locations", desc = "Shows the number of found egg locations on this island. Use §eLoad from NEU PV §7to import collected locations from the Hypixel API.")
     @ConfigEditorBoolean
     @FeatureToggle
     public boolean showCollectedLocationCount = false;
