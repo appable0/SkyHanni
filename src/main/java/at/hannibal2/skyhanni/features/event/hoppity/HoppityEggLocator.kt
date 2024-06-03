@@ -151,7 +151,7 @@ object HoppityEggLocator {
     private fun LorenzRenderWorldEvent.drawEggWaypoint(location: LorenzVec, label: String) {
         val shouldMarkDuplicate = config.highlightDuplicateEggLocations
             && HoppityEggLocations.hasCollectedEgg(location)
-        val possibleDuplicateLabel = if (shouldMarkDuplicate) "$label §c(Duplicate Location)" else label
+        val possibleDuplicateLabel = if (shouldMarkDuplicate) "$label §c(Dupe)" else label
         if (!shouldMarkDuplicate) {
             drawWaypointFilled(location, LorenzColor.GREEN.toColor(), seeThroughBlocks = true)
         } else {
