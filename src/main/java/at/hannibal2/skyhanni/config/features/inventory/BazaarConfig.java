@@ -29,7 +29,7 @@ public class BazaarConfig {
 
     @Expose
     @ConfigLink(owner = BazaarConfig.class, field = "bestSellMethod")
-    public Position bestSellMethodPos = new Position(394, 142, false, true);
+    public Position bestSellMethodPos = new Position(394, 142);
 
     @Expose
     @ConfigOption(name = "Cancelled Buy Order Clipboard",
@@ -53,7 +53,7 @@ public class BazaarConfig {
 
     @Expose
     @ConfigLink(owner = BazaarConfig.class, field = "maxPurseItems")
-    public Position maxPurseItemsPosition = new Position(346, 90, true, false);
+    public Position maxPurseItemsPosition = new Position(346, 90);
 
     @Expose
     @ConfigOption(name = "Craft Materials Bazaar", desc = "In the crafting view, offer a shopping list of required materials for the craft along with a convenient shortcut for purchasing them from the Bazaar.")
@@ -63,5 +63,5 @@ public class BazaarConfig {
 
     @Expose
     @ConfigLink(owner = BazaarConfig.class, field = "craftMaterialsFromBazaar")
-    public Position craftMaterialsFromBazaarPosition = new Position(50, 50, true, false);
+    public Position craftMaterialsFromBazaarPosition = new Position(50, 50);
 }

@@ -61,40 +61,18 @@ public class Position {
     }
 
     public Position(int x, int y) {
-        this(x, y, false, false);
+        this(x, y, 1f);
     }
 
     public Position(int x, int y, float scale) {
-        this.x = x;
-        this.y = y;
-        this.centerX = false;
-        this.centerY = true;
-        this.scale = scale;
+        this(x, y, scale, false);
     }
 
     public Position(int x, int y, float scale, boolean center) {
         this.x = x;
         this.y = y;
-        this.centerX = false;
-        this.centerY = true;
         this.scale = scale;
         this.center = center;
-    }
-
-    public Position(int x, int y, boolean centerX, boolean centerY) {
-        this.x = x;
-        this.y = y;
-        this.centerX = centerX;
-        this.centerY = centerY;
-    }
-
-    public void set(Position other) {
-        this.x = other.x;
-        this.y = other.y;
-        this.centerX = other.centerX;
-        this.centerY = other.centerY;
-        this.scale = other.getScale();
-        this.center = other.isCenter();
     }
 
     public Position setIgnoreCustomScale(boolean ignoreCustomScale) {

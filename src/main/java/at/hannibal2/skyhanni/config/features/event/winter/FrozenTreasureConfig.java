@@ -124,5 +124,5 @@ public class FrozenTreasureConfig {
 
     @Expose
     @ConfigLink(owner = FrozenTreasureConfig.class, field = "enabled")
-    public Position position = new Position(10, 80, false, true);
+    public Position position = new Position(10, 80);
 }

@@ -93,5 +93,5 @@ public class NextConfig {
 
     @Expose
     @ConfigLink(owner = NextConfig.class, field = "bestDisplay")
-    public Position displayPos = new Position(-200, -200, false, true);
+    public Position displayPos = new Position(-200, -200);
 }

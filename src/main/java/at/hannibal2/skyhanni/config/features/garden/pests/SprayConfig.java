@@ -57,5 +57,5 @@ public class SprayConfig {
 
     @Expose
     @ConfigLink(owner = SprayConfig.class, field = "displayEnabled")
-    public Position displayPosition = new Position(390, 75, false, true);
+    public Position displayPosition = new Position(390, 75);
 }

@@ -34,7 +34,7 @@ public class OptimalSpeedConfig {
 
     @Expose
     @ConfigLink(owner = OptimalSpeedConfig.class, field = "signEnabled")
-    public Position signPosition = new Position(20, -195, false, true);
+    public Position signPosition = new Position(20, -195);
 
     @Expose
     @ConfigOption(name = "Custom Speed", desc = "Change the exact speed for every single crop.")
@@ -43,5 +43,5 @@ public class OptimalSpeedConfig {
 
     @Expose
     @ConfigLink(owner = OptimalSpeedConfig.class, field = "showOnHUD")
-    public Position pos = new Position(5, -200, false, true);
+    public Position pos = new Position(5, -200);
 }

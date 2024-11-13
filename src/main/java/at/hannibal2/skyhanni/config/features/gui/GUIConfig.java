@@ -124,7 +124,7 @@ public class GUIConfig {
 
     @Expose
     @ConfigLink(owner = GUIConfig.class, field = "realTime")
-    public Position realTimePosition = new Position(10, 10, false, true);
+    public Position realTimePosition = new Position(10, 10);
 
     @Expose
     @Category(name = "Cosmetic", desc = "Cosmetics Settings")
@@ -138,7 +138,7 @@ public class GUIConfig {
 
     @Expose
     @ConfigLink(owner = GUIConfig.class, field = "tpsDisplay")
-    public Position tpsDisplayPosition = new Position(10, 10, false, true);
+    public Position tpsDisplayPosition = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Config Button", desc = "Add a button to the pause menu to configure SkyHanni.")

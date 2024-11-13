@@ -49,7 +49,7 @@ public class CrimsonIsleConfig {
 
     @Expose
     @ConfigLink(owner = CrimsonIsleConfig.class, field = "volcanoExplosivity")
-    public Position positionVolcano = new Position(20, 20, false, true);
+    public Position positionVolcano = new Position(20, 20);
 
     @Expose
     @ConfigOption(name = "Dojo Rank Display", desc = "Display your rank, score, actual belt, and points needed for the next belt in the Challenges inventory on the Crimson Isles.")
@@ -59,6 +59,6 @@ public class CrimsonIsleConfig {
 
     @Expose
     @ConfigLink(owner = CrimsonIsleConfig.class, field = "showDojoRankDisplay")
-    public Position dojoRankDisplayPosition = new Position(-378, 206, false, true);
+    public Position dojoRankDisplayPosition = new Position(-378, 206);
 
 }

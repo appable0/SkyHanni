@@ -139,5 +139,5 @@ public class GhostCounterConfig {
 
     @Expose
     @ConfigLink(owner = GhostCounterConfig.class, field = "enabled")
-    public Position position = new Position(50, 50, false, true);
+    public Position position = new Position(50, 50);
 }

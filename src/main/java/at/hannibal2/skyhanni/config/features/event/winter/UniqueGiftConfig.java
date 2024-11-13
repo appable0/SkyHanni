@@ -17,5 +17,5 @@ public class UniqueGiftConfig {
 
     @Expose
     @ConfigLink(owner = UniqueGiftConfig.class, field = "enabled")
-    public Position position = new Position(100, 100, false, true);
+    public Position position = new Position(100, 100);
 }

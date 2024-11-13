@@ -65,5 +65,5 @@ public class MiningEventConfig {
 
     @Expose
     @ConfigLink(owner = MiningEventConfig.class, field = "enabled")
-    public Position position = new Position(200, 60, false, true);
+    public Position position = new Position(200, 60);
 }

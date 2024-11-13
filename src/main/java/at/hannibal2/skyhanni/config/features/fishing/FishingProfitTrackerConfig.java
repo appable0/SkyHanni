@@ -17,7 +17,7 @@ public class FishingProfitTrackerConfig {
 
     @Expose
     @ConfigLink(owner = FishingProfitTrackerConfig.class, field = "enabled")
-    public Position position = new Position(20, 20, false, true);
+    public Position position = new Position(20, 20);
 
     @Expose
     @ConfigOption(name = "Show When Pickup", desc = "Show the fishing tracker for a couple of seconds after catching something even while moving.")

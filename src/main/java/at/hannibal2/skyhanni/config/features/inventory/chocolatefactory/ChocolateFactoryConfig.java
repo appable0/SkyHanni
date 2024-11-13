@@ -126,7 +126,7 @@ public class ChocolateFactoryConfig {
 
     @Expose
     @ConfigLink(owner = ChocolateFactoryConfig.class, field = "statsDisplay")
-    public Position position = new Position(163, 160, false, true);
+    public Position position = new Position(163, 160);
 
     @Expose
     @ConfigOption(name = "Compact On Click", desc = "Compact the item tooltip when clicking on the chocolate.")
@@ -147,7 +147,7 @@ public class ChocolateFactoryConfig {
 
     @Expose
     @ConfigLink(owner = ChocolateFactoryConfig.class, field = "tooltipMove")
-    public Position tooltipMovePosition = new Position(-380, 150, false, true);
+    public Position tooltipMovePosition = new Position(-380, 150);
 
     @Expose
     @ConfigOption(name = "Hoppity Collection Stats", desc = "Show info about your Hoppity rabbit collection.")
@@ -157,7 +157,7 @@ public class ChocolateFactoryConfig {
 
     @Expose
     @ConfigLink(owner = ChocolateFactoryConfig.class, field = "hoppityCollectionStats")
-    public Position hoppityStatsPosition = new Position(163, 160, false, true);
+    public Position hoppityStatsPosition = new Position(163, 160);
 
     @Expose
     @ConfigOption(name = "Leaderboard Change",
@@ -246,5 +246,5 @@ public class ChocolateFactoryConfig {
 
     @Expose
     @ConfigLink(owner = ChocolateFactoryConfig.class, field = "strayRabbitTracker")
-    public Position strayRabbitTrackerPosition = new Position(300, 300, false, true);
+    public Position strayRabbitTrackerPosition = new Position(300, 300);
 }

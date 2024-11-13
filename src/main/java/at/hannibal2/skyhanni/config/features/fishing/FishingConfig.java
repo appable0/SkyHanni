@@ -82,7 +82,7 @@ public class FishingConfig {
 
     @Expose
     @ConfigLink(owner = FishingConfig.class, field = "sharkFishCounter")
-    public Position sharkFishCounterPos = new Position(10, 10, false, true);
+    public Position sharkFishCounterPos = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Shorten Fishing Message", desc = "Shorten the chat message that says what type of Sea Creature you have fished.")

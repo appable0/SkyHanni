@@ -16,5 +16,5 @@ public class DungeonCopilotConfig {
 
     @Expose
     @ConfigLink(owner = DungeonCopilotConfig.class, field = "enabled")
-    public Position pos = new Position(10, 10, false, true);
+    public Position pos = new Position(10, 10);
 }

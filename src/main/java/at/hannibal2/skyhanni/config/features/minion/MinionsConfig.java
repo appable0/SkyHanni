@@ -45,7 +45,7 @@ public class MinionsConfig {
 
     @Expose
     @ConfigLink(owner = MinionsConfig.class, field = "hopperProfitDisplay")
-    public Position hopperProfitPos = new Position(360, 90, false, true);
+    public Position hopperProfitPos = new Position(360, 90);
 
     @Expose
     @ConfigOption(name = "Hide Mob Nametag", desc = "Hide the nametags of mobs close to minions.")

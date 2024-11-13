@@ -18,7 +18,7 @@ public class MythologicalMobTrackerConfig {
 
     @Expose
     @ConfigLink(owner = MythologicalMobTrackerConfig.class, field = "enabled")
-    public Position position = new Position(20, 20, false, true);
+    public Position position = new Position(20, 20);
 
     @Expose
     @ConfigOption(name = "Show Percentage", desc = "Show percentage how often what mob spawned.")

@@ -37,5 +37,5 @@ public class ZombieShootoutConfig {
 
     @Expose
     @ConfigLink(owner = ZombieShootoutConfig.class, field = "lampTimer")
-    public Position lampPosition = new Position(20, 20, false, true);
+    public Position lampPosition = new Position(20, 20);
 }

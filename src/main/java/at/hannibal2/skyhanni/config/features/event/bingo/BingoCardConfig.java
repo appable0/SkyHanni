@@ -44,7 +44,7 @@ public class BingoCardConfig {
 
     @Expose
     @ConfigLink(owner = BingoCardConfig.class, field = "enabled")
-    public Position bingoCardPos = new Position(10, 10, false, true);
+    public Position bingoCardPos = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Next Tip Duration", desc = "Show the duration until the next hidden personal goal gets a tip revealed.")

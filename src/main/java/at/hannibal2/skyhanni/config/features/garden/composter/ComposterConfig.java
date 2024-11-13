@@ -61,11 +61,11 @@ public class ComposterConfig {
 
     @Expose
     @ConfigLink(owner = ComposterConfig.class, field = "overlay")
-    public Position overlayOrganicMatterPos = new Position(140, 152, false, true);
+    public Position overlayOrganicMatterPos = new Position(140, 152);
 
     @Expose
     @ConfigLink(owner = ComposterConfig.class, field = "overlay")
-    public Position overlayFuelExtrasPos = new Position(-320, 152, false, true);
+    public Position overlayFuelExtrasPos = new Position(-320, 152);
 
     @Expose
     @ConfigOption(
@@ -136,9 +136,9 @@ public class ComposterConfig {
 
     @Expose
     @ConfigLink(owner = ComposterConfig.class, field = "displayEnabled")
-    public Position displayPos = new Position(-390, 10, false, true);
+    public Position displayPos = new Position(-390, 10);
 
     @Expose
     @ConfigLink(owner = ComposterConfig.class, field = "displayEnabled")
-    public Position outsideGardenPos = new Position(-363, 13, false, true);
+    public Position outsideGardenPos = new Position(-363, 13);
 }

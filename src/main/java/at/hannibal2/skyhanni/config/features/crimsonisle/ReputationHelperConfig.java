@@ -37,7 +37,7 @@ public class ReputationHelperConfig {
 
     @Expose
     @ConfigLink(owner = ReputationHelperConfig.class, field = "enabled")
-    public Position position = new Position(10, 10, false, true);
+    public Position position = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Show Locations", desc = "Crimson Isles waypoints for locations to get reputation.")

@@ -22,6 +22,6 @@ public class DraconicSacrificeTrackerConfig {
 
     @Expose
     @ConfigLink(owner = DraconicSacrificeTrackerConfig.class, field = "enabled")
-    public Position position = new Position(201, 199, false, true);
+    public Position position = new Position(201, 199);
 
 }

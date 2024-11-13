@@ -38,7 +38,7 @@ public class WinterConfig {
 
     @Expose
     @ConfigLink(owner = WinterConfig.class, field = "islandCloseTime")
-    public Position islandCloseTimePosition = new Position(10, 10, false, true);
+    public Position islandCloseTimePosition = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "New Year Cake Reminder", desc = "Send a reminder while the New Year Cake can be collected in the hub.")

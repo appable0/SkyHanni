@@ -137,5 +137,5 @@ public class DropsStatisticsConfig {
 
     @Expose
     @ConfigLink(owner = DropsStatisticsConfig.class, field = "enabled")
-    public Position pos = new Position(5, 20, false, true);
+    public Position pos = new Position(5, 20);
 }

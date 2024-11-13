@@ -77,5 +77,5 @@ public class MushroomPetPerkConfig {
 
     @Expose
     @ConfigLink(owner = MushroomPetPerkConfig.class, field = "enabled")
-    public Position pos = new Position(-112, -143, false, true);
+    public Position pos = new Position(-112, -143);
 }

@@ -17,7 +17,7 @@ public class ChickenHeadConfig {
 
     @Expose
     @ConfigLink(owner = ChickenHeadConfig.class, field = "displayTimer")
-    public Position position = new Position(-372, 73, false, true);
+    public Position position = new Position(-372, 73);
 
     @Expose
     @ConfigOption(name = "Hide Chat", desc = "Hide the 'You laid an egg!' chat message.")

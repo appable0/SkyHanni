@@ -134,6 +134,6 @@ public class PowderTrackerConfig {
 
     @Expose
     @ConfigLink(owner = PowderTrackerConfig.class, field = "enabled")
-    public Position position = new Position(-274, 0, false, true);
+    public Position position = new Position(-274, 0);
 
 }

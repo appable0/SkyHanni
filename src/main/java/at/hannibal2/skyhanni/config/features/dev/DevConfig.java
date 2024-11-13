@@ -61,11 +61,11 @@ public class DevConfig {
 
     // Does not have a config element!
     @Expose
-    public Position debugPos = new Position(10, 10, false, true);
+    public Position debugPos = new Position(10, 10);
 
     // Does not have a config element!
     @Expose
-    public Position debugLocationPos = new Position(1, 160, false, true);
+    public Position debugLocationPos = new Position(1, 160);
 
     // Does not have a config element!
     @Expose
@@ -73,7 +73,7 @@ public class DevConfig {
 
     @Expose
     @ConfigLink(owner = DebugConfig.class, field = "raytracedOreblock")
-    public Position debugOrePos = new Position(1, 200, false, true);
+    public Position debugOrePos = new Position(1, 200);
 
     @Expose
     @ConfigOption(

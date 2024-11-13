@@ -143,10 +143,10 @@ public class MiscConfig {
     public boolean hideTemporaryArmorstands = true;
 
     @Expose
-    public Position collectionCounterPos = new Position(10, 10, false, true);
+    public Position collectionCounterPos = new Position(10, 10);
 
     @Expose
-    public Position carryPosition = new Position(10, 10, false, true);
+    public Position carryPosition = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Brewing Stand Overlay", desc = "Display the item names directly inside the Brewing Stand.")
@@ -210,7 +210,7 @@ public class MiscConfig {
 
     @Expose
     @ConfigLink(owner = MiscConfig.class, field = "playerMovementSpeed")
-    public Position playerMovementSpeedPos = new Position(394, 124, false, true);
+    public Position playerMovementSpeedPos = new Position(394, 124);
 
     @Expose
     @ConfigOption(name = "Server Restart Title", desc = "Show a title with seconds remaining until the server restarts after a Game Update or Scheduled Restart.")
@@ -287,7 +287,7 @@ public class MiscConfig {
 
     @Expose
     @ConfigLink(owner = NextJacobContestConfig.class, field = "display")
-    public Position inventoryLoadPos = new Position(394, 124, false, true);
+    public Position inventoryLoadPos = new Position(394, 124);
 
     @Expose
     @ConfigOption(name = "Fix Ghost Entities", desc = "Remove ghost entities caused by a Hypixel bug.\n" +

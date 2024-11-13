@@ -18,6 +18,6 @@ public class ItemProfitTrackerConfig {
 
     @Expose
     @ConfigLink(owner = ItemProfitTrackerConfig.class, field = "enabled")
-    public Position pos = new Position(20, 20, false, true);
+    public Position pos = new Position(20, 20);
 
 }

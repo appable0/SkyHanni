@@ -18,7 +18,7 @@ public class ChocolateShopPriceConfig {
 
     @Expose
     @ConfigLink(owner = ChocolateFactoryConfig.class, field = "chocolateShopPrice")
-    public Position position = new Position(200, 150, false, true);
+    public Position position = new Position(200, 150);
 
     @Expose
     @ConfigOption(name = "Item Scale", desc = "Change the size of the items.")

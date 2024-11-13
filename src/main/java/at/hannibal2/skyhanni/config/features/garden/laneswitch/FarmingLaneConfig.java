@@ -34,7 +34,7 @@ public class FarmingLaneConfig {
 
     @Expose
     @ConfigLink(owner = FarmingLaneConfig.class, field = "distanceDisplay")
-    public Position distanceDisplayPosition = new Position(0, 200, false, true);
+    public Position distanceDisplayPosition = new Position(0, 200);
 
     @Expose
     @ConfigOption(name = "Corner Waypoints", desc = "Show the corner for the current lane in the world.")

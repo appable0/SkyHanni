@@ -39,5 +39,5 @@ public class MineshaftPityDisplayConfig {
 
     @Expose
     @ConfigLink(owner = MineshaftPityDisplayConfig.class, field = "enabled")
-    public Position position = new Position(16, 192, false, true);
+    public Position position = new Position(16, 192);
 }

@@ -27,6 +27,6 @@ public class RngMeterDisplayConfig {
 
     @Expose
     @ConfigLink(owner = RngMeterDisplayConfig.class, field = "enabled")
-    public Position pos = new Position(410, 110, false, true);
+    public Position pos = new Position(410, 110);
 
 }

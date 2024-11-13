@@ -22,7 +22,7 @@ public class InGameDateConfig {
 
     @Expose
     @ConfigLink(owner = InGameDateConfig.class, field = "enabled")
-    public Position position = new Position(10, 10, false, true);
+    public Position position = new Position(10, 10);
 
     @Expose
     @ConfigOption(

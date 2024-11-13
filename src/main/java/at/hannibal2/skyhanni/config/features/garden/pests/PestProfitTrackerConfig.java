@@ -34,5 +34,5 @@ public class PestProfitTrackerConfig {
 
     @Expose
     @ConfigLink(owner = PestProfitTrackerConfig.class, field = "enabled")
-    public Position position = new Position(20, 20, false, true);
+    public Position position = new Position(20, 20);
 }

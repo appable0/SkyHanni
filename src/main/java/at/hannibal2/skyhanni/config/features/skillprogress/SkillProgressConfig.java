@@ -106,17 +106,17 @@ public class SkillProgressConfig {
 
     @Expose
     @ConfigLink(owner = SkillProgressConfig.class, field = "enabled")
-    public Position displayPosition = new Position(384, -105, false, true);
+    public Position displayPosition = new Position(384, -105);
 
     @Expose
     @ConfigLink(owner = SkillProgressBarConfig.class, field = "enabled")
-    public Position barPosition = new Position(384, -87, false, true);
+    public Position barPosition = new Position(384, -87);
 
     @Expose
     @ConfigLink(owner = AllSkillDisplayConfig.class, field = "enabled")
-    public Position allSkillPosition = new Position(5, 209, false, true);
+    public Position allSkillPosition = new Position(5, 209);
 
     @Expose
     @ConfigLink(owner = SkillETADisplayConfig.class, field = "enabled")
-    public Position etaPosition = new Position(5, 155, false, true);
+    public Position etaPosition = new Position(5, 155);
 }

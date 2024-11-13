@@ -23,5 +23,5 @@ public class KingTalismanConfig {
 
     @Expose
     @ConfigLink(owner = KingTalismanConfig.class, field = "enabled")
-    public Position position = new Position(-400, 220, false, true);
+    public Position position = new Position(-400, 220);
 }

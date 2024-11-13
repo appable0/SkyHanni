@@ -52,5 +52,5 @@ public class RiftInventoryValueConfig {
 
     @Expose
     @ConfigLink(owner = RiftInventoryValueConfig.class, field = "enabled")
-    public Position position = new Position(126, 156, false, true);
+    public Position position = new Position(126, 156);
 }

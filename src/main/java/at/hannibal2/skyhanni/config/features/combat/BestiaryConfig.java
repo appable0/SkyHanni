@@ -100,5 +100,5 @@ public class BestiaryConfig {
 
     @Expose
     @ConfigLink(owner = BestiaryConfig.class, field = "enabled")
-    public Position position = new Position(100, 100, false, true);
+    public Position position = new Position(100, 100);
 }

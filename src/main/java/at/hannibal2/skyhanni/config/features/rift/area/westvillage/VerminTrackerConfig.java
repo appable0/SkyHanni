@@ -34,6 +34,6 @@ public class VerminTrackerConfig {
 
     @Expose
     @ConfigLink(owner = VerminTrackerConfig.class, field = "enabled")
-    public Position position = new Position(16, -232, false, true);
+    public Position position = new Position(16, -232);
 }
 

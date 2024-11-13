@@ -95,5 +95,5 @@ public class BarnTimerConfig {
 
     @Expose
     @ConfigLink(owner = BarnTimerConfig.class, field = "enabled")
-    public Position pos = new Position(10, 10, false, true);
+    public Position pos = new Position(10, 10);
 }

@@ -63,6 +63,6 @@ public class BroodmotherConfig {
 
     @Expose
     @ConfigLink(owner = BroodmotherConfig.class, field = "countdown")
-    public Position countdownPosition = new Position(10, 10, false, true);
+    public Position countdownPosition = new Position(10, 10);
 
 }

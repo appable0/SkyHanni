@@ -35,5 +35,5 @@ public class BingoConfig {
 
     @Expose
     @ConfigLink(owner = BingoConfig.class, field = "minionCraftHelperEnabled")
-    public Position minionCraftHelperPos = new Position(10, 10, false, true);
+    public Position minionCraftHelperPos = new Position(10, 10);
 }

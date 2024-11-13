@@ -17,7 +17,7 @@ public class CenturyConfig {
 
     @Expose
     @ConfigLink(owner = CenturyConfig.class, field = "enableActiveTimer")
-    public Position activeTimerPosition = new Position(100, 100, false, true);
+    public Position activeTimerPosition = new Position(100, 100);
 
     @ConfigOption(name = "Enable Active Player Alert", desc = "Loudly proclaim when it is time to break some wheat.")
     @Expose

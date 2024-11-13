@@ -36,5 +36,5 @@ public class ExcavatorProfitTrackerConfig {
 
     @Expose
     @ConfigLink(owner = ExcavatorProfitTrackerConfig.class, field = "enabled")
-    public Position position = new Position(-380, 150, false, true);
+    public Position position = new Position(-380, 150);
 }

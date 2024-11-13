@@ -18,7 +18,7 @@ public class SeaCreatureTrackerConfig {
 
     @Expose
     @ConfigLink(owner = SeaCreatureTrackerConfig.class, field = "enabled")
-    public Position position = new Position(20, 20, false, true);
+    public Position position = new Position(20, 20);
 
     @Expose
     @ConfigOption(name = "Show Percentage", desc = "Show percentage how often what sea creature got caught.")

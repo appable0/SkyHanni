@@ -22,5 +22,5 @@ public class CorpseTrackerConfig {
 
     @Expose
     @ConfigLink(owner = CorpseTrackerConfig.class, field = "enabled")
-    public Position position = new Position(-274, 0, false, true);
+    public Position position = new Position(-274, 0);
 }

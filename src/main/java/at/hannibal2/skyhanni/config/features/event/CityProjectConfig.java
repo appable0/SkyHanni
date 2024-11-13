@@ -29,5 +29,5 @@ public class CityProjectConfig {
 
     @Expose
     @ConfigLink(owner = CityProjectConfig.class, field = "showMaterials")
-    public Position pos = new Position(150, 150, false, true);
+    public Position pos = new Position(150, 150);
 }

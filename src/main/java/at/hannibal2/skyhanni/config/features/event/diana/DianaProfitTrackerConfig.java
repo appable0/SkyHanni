@@ -18,5 +18,5 @@ public class DianaProfitTrackerConfig {
 
     @Expose
     @ConfigLink(owner = DianaProfitTrackerConfig.class, field = "enabled")
-    public Position position = new Position(20, 20, false, true);
+    public Position position = new Position(20, 20);
 }

@@ -39,7 +39,7 @@ public class AshfangConfig {
 
     @Expose
     @ConfigLink(owner = AshfangConfig.class, field = "freezeCooldown")
-    public Position freezeCooldownPos = new Position(10, 10, false, true);
+    public Position freezeCooldownPos = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Reset Time", desc = "Show the cooldown until Ashfang pulls his underlings back.")
@@ -49,5 +49,5 @@ public class AshfangConfig {
 
     @Expose
     @ConfigLink(owner = AshfangConfig.class, field = "nextResetCooldown")
-    public Position nextResetCooldownPos = new Position(10, 10, false, true);
+    public Position nextResetCooldownPos = new Position(10, 10);
 }

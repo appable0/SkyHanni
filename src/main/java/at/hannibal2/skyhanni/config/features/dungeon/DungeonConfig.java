@@ -28,7 +28,7 @@ public class DungeonConfig {
 
     @Expose
     @ConfigLink(owner = DungeonConfig.class, field = "showMilestonesDisplay")
-    public Position showMileStonesDisplayPos = new Position(10, 10, false, true);
+    public Position showMileStonesDisplayPos = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Death Counter Display", desc = "Display the total amount of deaths in the current Dungeon.")
@@ -38,7 +38,7 @@ public class DungeonConfig {
 
     @Expose
     @ConfigLink(owner = DungeonConfig.class, field = "deathCounterDisplay")
-    public Position deathCounterPos = new Position(10, 10, false, true);
+    public Position deathCounterPos = new Position(10, 10);
 
     @Expose
     @ConfigOption(name = "Clean End", desc = "")
