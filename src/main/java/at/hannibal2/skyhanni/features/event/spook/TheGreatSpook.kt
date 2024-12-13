@@ -22,12 +22,12 @@ import at.hannibal2.skyhanni.utils.NEUCalculator
 import at.hannibal2.skyhanni.utils.RegexUtils.matchMatcher
 import at.hannibal2.skyhanni.utils.RegexUtils.matches
 import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.SoundUtils
 import at.hannibal2.skyhanni.utils.TimeUnit
 import at.hannibal2.skyhanni.utils.TimeUtils.format
 import at.hannibal2.skyhanni.utils.renderables.Renderable
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import at.hannibal2.skyhanni.utils.repopatterns.RepoPattern
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.minutes
@@ -43,6 +43,7 @@ object TheGreatSpook {
 
     private var displayMobCooldown: Renderable? = null
     private var displayGreatSpookEnd: Renderable? = null
+    private var displayFearStat = RenderableString()
 
     private var timeUntilNextMob = SimpleTimeMark.farPast()
 
@@ -159,7 +160,8 @@ object TheGreatSpook {
         }
         if (config.fearStatDisplay) {
             SkyblockStat.FEAR.displayValue?.let {
-                config.positionFear.renderString(it, posLabel = "Fear Stat Display")
+                displayFearStat.text = it
+                config.positionFear.renderRenderable(displayFearStat, posLabel = "Fear Stat Display")
             }
         }
         if (config.greatSpookTimeLeft) {

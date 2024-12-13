@@ -14,7 +14,8 @@ import at.hannibal2.skyhanni.events.dungeon.DungeonStartEvent
 import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
 import at.hannibal2.skyhanni.utils.LorenzUtils
 import at.hannibal2.skyhanni.utils.RegexUtils.matchMatcher
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import at.hannibal2.skyhanni.utils.repopatterns.RepoPattern
 import net.minecraft.entity.item.EntityArmorStand
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
@@ -47,7 +48,7 @@ object DungeonCopilot {
         "(.*) §r§ehas obtained §r§a§r§[6c]§r§[8c](?<key>Wither|Blood) Key§r§e!".toPattern(),
     )
 
-    private var nextStep = ""
+    private var nextStep = RenderableString()
     private var searchForKey = false
 
     @SubscribeEvent
@@ -105,7 +106,7 @@ object DungeonCopilot {
     }
 
     private fun changeNextStep(step: String) {
-        nextStep = step
+        nextStep.text = step
     }
 
     @HandleEvent(onlyOnIsland = IslandType.CATACOMBS)
@@ -143,7 +144,7 @@ object DungeonCopilot {
 
     @SubscribeEvent
     fun onWorldChange(event: LorenzWorldChangeEvent) {
-        changeNextStep("")
+        nextStep.clear()
     }
 
     private fun isEnabled(): Boolean = DungeonAPI.inDungeon() && config.enabled
@@ -152,7 +153,7 @@ object DungeonCopilot {
     fun onRenderOverlay(event: GuiRenderEvent.GuiOverlayRenderEvent) {
         if (!isEnabled()) return
 
-        config.pos.renderString(nextStep, posLabel = "Dungeon Copilot")
+        config.pos.renderRenderable(nextStep, posLabel = "Dungeon Copilot")
     }
 
     @SubscribeEvent

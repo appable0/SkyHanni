@@ -17,10 +17,11 @@ import at.hannibal2.skyhanni.utils.LorenzColor
 import at.hannibal2.skyhanni.utils.LorenzUtils
 import at.hannibal2.skyhanni.utils.LorenzUtils.isRancherSign
 import at.hannibal2.skyhanni.utils.NEUInternalName.Companion.toInternalName
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
 import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderables
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.renderables.Renderable
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import io.github.notenoughupdates.moulconfig.observer.Property
 import net.minecraft.client.Minecraft
 import net.minecraft.client.gui.inventory.GuiEditSign
@@ -59,6 +60,7 @@ object GardenOptimalSpeed {
     private var lastWarnTime = SimpleTimeMark.farPast()
     private var cropInHand: CropType? = null
     private var lastCrop: CropType? = null
+    private var optimalSpeedDisplay = RenderableString()
     private var display = listOf<Renderable>()
     private var lastToolSwitch = SimpleTimeMark.farPast()
 
@@ -177,8 +179,8 @@ object GardenOptimalSpeed {
         val recentlyStartedSneaking = sneaking && !sneakingPersistent
 
         val colorCode = if (recentlySwitchedTool || recentlyStartedSneaking) "7" else if (speed != currentSpeed) "c" else "a"
-
-        if (config.showOnHUD) config.pos.renderString("§$colorCode$text", posLabel = "Garden Optimal Speed")
+        optimalSpeedDisplay.text = "§$colorCode$text"
+        if (config.showOnHUD) config.pos.renderRenderable(optimalSpeedDisplay, posLabel = "Garden Optimal Speed")
         if (speed != currentSpeed && !recentlySwitchedTool && !recentlyStartedSneaking) warn(speed)
     }
 

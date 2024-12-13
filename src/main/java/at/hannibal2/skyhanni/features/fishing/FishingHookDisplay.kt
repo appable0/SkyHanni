@@ -10,7 +10,8 @@ import at.hannibal2.skyhanni.events.entity.EntityEnterWorldEvent
 import at.hannibal2.skyhanni.events.fishing.FishingBobberCastEvent
 import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
 import at.hannibal2.skyhanni.utils.LorenzUtils
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraft.entity.item.EntityArmorStand
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
@@ -21,6 +22,7 @@ object FishingHookDisplay {
     private var armorStand: EntityArmorStand? = null
     private val potentialArmorStands = mutableListOf<EntityArmorStand>()
     private val pattern = "§e§l(\\d+(\\.\\d+)?)".toPattern()
+    private val display = RenderableString()
 
     @SubscribeEvent
     fun onWorldChange(event: LorenzWorldChangeEvent) {
@@ -75,9 +77,9 @@ object FishingHookDisplay {
             return
         }
         if (!armorStand.hasCustomName()) return
-        val alertText = if (armorStand.name == "§c§l!!!") config.customAlertText.replace("&", "§") else armorStand.name
+        display.text = if (armorStand.name == "§c§l!!!") config.customAlertText.replace("&", "§") else armorStand.name
 
-        config.position.renderString(alertText, posLabel = "Fishing Hook Display")
+        config.position.renderRenderable(display, posLabel = "Fishing Hook Display")
     }
 
     private fun EntityArmorStand.hasCorrectName(): Boolean {

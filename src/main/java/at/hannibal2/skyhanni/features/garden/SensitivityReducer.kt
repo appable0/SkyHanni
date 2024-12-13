@@ -13,8 +13,9 @@ import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
 import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.ConditionalUtils.afterChange
 import at.hannibal2.skyhanni.utils.KeyboardManager.isKeyHeld
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.math.abs
@@ -31,6 +32,7 @@ object SensitivityReducer {
 
     private val mc get() = Minecraft.getMinecraft()
     private val gameSettings = mc.gameSettings
+    private val sensitivityLoweredDisplay = RenderableString("§eSensitivity Lowered")
 
     @SubscribeEvent
     fun onTick(event: LorenzTickEvent) {
@@ -110,7 +112,7 @@ object SensitivityReducer {
         if (!(isToggled || isManualToggle)) return
         if (!config.showGUI) return
         if (LockMouseLook.lockedMouse) return
-        config.position.renderString("§eSensitivity Lowered", posLabel = "Sensitivity Lowered")
+        config.position.renderRenderable(sensitivityLoweredDisplay, posLabel = "Sensitivity Lowered")
     }
 
     private fun isHoldingTool(): Boolean {

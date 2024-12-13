@@ -13,12 +13,13 @@ import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.HypixelCommands
 import at.hannibal2.skyhanni.utils.LorenzUtils
 import at.hannibal2.skyhanni.utils.LorenzUtils.isInIsland
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.SoundUtils
 import at.hannibal2.skyhanni.utils.SoundUtils.playSound
 import at.hannibal2.skyhanni.utils.StringUtils
 import at.hannibal2.skyhanni.utils.TimeUtils.format
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.reflect.KMutableProperty0
 import kotlin.time.Duration
@@ -46,7 +47,7 @@ object BroodmotherFeatures {
     private var lastStage: StageEntry? = null
     private var currentStage: StageEntry? = null
     private var broodmotherSpawnTime = SimpleTimeMark.farPast()
-    private var display = ""
+    private var display = RenderableString()
 
     @HandleEvent
     fun onTabListUpdate(event: WidgetUpdateEvent) {
@@ -145,18 +146,17 @@ object BroodmotherFeatures {
         broodmotherSpawnTime = SimpleTimeMark.farPast()
         lastStage = null
         currentStage = null
-        display = ""
+        display.clear()
     }
 
     @SubscribeEvent
     fun onRenderOverlay(event: GuiRenderEvent.GuiOverlayRenderEvent) {
-        if (!isCountdownEnabled()) return
-        if (display.isEmpty()) return
+        if (!isCountdownEnabled() || !display.hasContent) return
         if (broodmotherSpawnTime.isInPast() && !broodmotherSpawnTime.isFarPast()) {
-            display = "§4Broodmother spawning now!"
+            display.text = "§4Broodmother spawning now!"
         }
 
-        config.countdownPosition.renderString(display, posLabel = "Broodmother Countdown")
+        config.countdownPosition.renderRenderable(display, posLabel = "Broodmother Countdown")
     }
 
     @SubscribeEvent
@@ -165,11 +165,11 @@ object BroodmotherFeatures {
 
         if (broodmotherSpawnTime.isFarPast()) {
             if (currentStage == StageEntry.ALIVE) {
-                display = "§4Broodmother spawned!"
+                display.text = "§4Broodmother spawned!"
             }
         } else {
             val countdown = broodmotherSpawnTime.timeUntil().format()
-            display = "§4Broodmother spawning in §b$countdown"
+            display.text = "§4Broodmother spawning in §b$countdown"
         }
     }
 

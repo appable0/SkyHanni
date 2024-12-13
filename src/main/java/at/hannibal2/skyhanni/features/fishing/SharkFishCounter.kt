@@ -10,14 +10,15 @@ import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
 import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.LorenzUtils
 import at.hannibal2.skyhanni.utils.NumberUtil.addSeparators
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @SkyHanniModule
 object SharkFishCounter {
 
     private var counter = mutableListOf(0, 0, 0, 0)
-    private var display = ""
+    private var display = RenderableString()
     private var hasWaterRodInHand = false
 
     @HandleEvent
@@ -27,7 +28,7 @@ object SharkFishCounter {
         val name = event.seaCreature.name
         if (!name.contains("Shark")) return
         counter[sharkIndex(name)] += if (event.doubleHook) 2 else 1
-        display = "§7Sharks caught: §e${
+        display.text = "§7Sharks caught: §e${
             counter.sum().addSeparators()
         } §7(§a${counter[0]} §9${counter[1]} §5${counter[2]} §6${counter[3]}§7)"
     }
@@ -63,7 +64,7 @@ object SharkFishCounter {
         val funnyComment = funnyComment(count)
         ChatUtils.chat("You caught $total §f(§a$n §9$b §5$t §6$g§f) §esharks during this fishing festival. $funnyComment")
         counter = mutableListOf(0, 0, 0, 0)
-        display = ""
+        display.clear()
     }
 
     private fun funnyComment(count: Int): String = when {
@@ -84,6 +85,6 @@ object SharkFishCounter {
         if (!SkyHanniMod.feature.fishing.sharkFishCounter) return
         if (!hasWaterRodInHand) return
 
-        SkyHanniMod.feature.fishing.sharkFishCounterPos.renderString(display, posLabel = "Shark Fish Counter")
+        SkyHanniMod.feature.fishing.sharkFishCounterPos.renderRenderable(display, posLabel = "Shark Fish Counter")
     }
 }

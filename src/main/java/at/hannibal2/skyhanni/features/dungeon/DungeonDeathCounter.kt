@@ -9,14 +9,15 @@ import at.hannibal2.skyhanni.events.dungeon.DungeonStartEvent
 import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
 import at.hannibal2.skyhanni.utils.ChatUtils
 import at.hannibal2.skyhanni.utils.RegexUtils.matches
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @SkyHanniModule
 object DungeonDeathCounter {
     private val config get() = SkyHanniMod.feature.dungeon
 
-    private var display = ""
+    private var display = RenderableString()
     private var deaths = 0
 
     private val deathPatternsList = listOf(
@@ -66,7 +67,7 @@ object DungeonDeathCounter {
 
     private fun update() {
         if (deaths == 0) {
-            display = ""
+            display.clear()
             return
         }
 
@@ -75,7 +76,7 @@ object DungeonDeathCounter {
             3 -> "§c"
             else -> "§4"
         }
-        display = color + "Deaths: $deaths"
+        display.text = color + "Deaths: $deaths"
     }
 
     @HandleEvent
@@ -94,10 +95,7 @@ object DungeonDeathCounter {
     fun onRenderOverlay(event: GuiRenderEvent.GuiOverlayRenderEvent) {
         if (!isEnabled()) return
 
-        config.deathCounterPos.renderString(
-            DungeonMilestonesDisplay.color + display,
-            posLabel = "Dungeon Death Counter"
-        )
+        config.deathCounterPos.renderRenderable(display, posLabel = "Dungeon Death Counter")
     }
 
     private fun isEnabled(): Boolean = DungeonAPI.inDungeon() && config.deathCounterDisplay

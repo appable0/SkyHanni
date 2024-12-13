@@ -6,8 +6,9 @@ import at.hannibal2.skyhanni.events.GuiRenderEvent
 import at.hannibal2.skyhanni.events.SecondPassedEvent
 import at.hannibal2.skyhanni.skyhannimodule.SkyHanniModule
 import at.hannibal2.skyhanni.utils.LorenzUtils
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
 import at.hannibal2.skyhanni.utils.SkyblockSeason
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 
 @SkyHanniModule
@@ -15,22 +16,22 @@ object AtmosphericFilterDisplay {
 
     private val config get() = SkyHanniMod.feature.garden.atmosphericFilterDisplay
 
-    private var display = ""
+    private var display = RenderableString()
 
     @SubscribeEvent
     fun onSecondPassed(event: SecondPassedEvent) {
         if (!isEnabled()) return
         if (!GardenAPI.inGarden() && !config.outsideGarden) return
-        display = drawDisplay(SkyblockSeason.currentSeason ?: return)
+        display.text = drawDisplay(SkyblockSeason.currentSeason ?: return)
     }
 
     @SubscribeEvent
     fun onRenderOverlay(event: GuiRenderEvent.GuiOverlayRenderEvent) {
         if (!isEnabled()) return
         if (GardenAPI.inGarden()) {
-            config.position.renderString(display, posLabel = "Atmospheric Filter Perk Display")
+            config.position.renderRenderable(display, posLabel = "Atmospheric Filter Perk Display")
         } else {
-            config.positionOutside.renderString(display, posLabel = "Atmospheric Filter Perk Display")
+            config.positionOutside.renderRenderable(display, posLabel = "Atmospheric Filter Perk Display")
         }
     }
 

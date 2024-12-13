@@ -22,7 +22,7 @@ import at.hannibal2.skyhanni.utils.LorenzUtils
 import at.hannibal2.skyhanni.utils.LorenzUtils.isInIsland
 import at.hannibal2.skyhanni.utils.LorenzVec
 import at.hannibal2.skyhanni.utils.RecalculatingValue
-import at.hannibal2.skyhanni.utils.RenderUtils.renderString
+import at.hannibal2.skyhanni.utils.RenderUtils.renderRenderable
 import at.hannibal2.skyhanni.utils.SimpleTimeMark
 import at.hannibal2.skyhanni.utils.SoundUtils
 import at.hannibal2.skyhanni.utils.StringUtils
@@ -30,6 +30,7 @@ import at.hannibal2.skyhanni.utils.TimeLimitedSet
 import at.hannibal2.skyhanni.utils.TimeUnit
 import at.hannibal2.skyhanni.utils.TimeUtils.format
 import at.hannibal2.skyhanni.utils.getLorenzVec
+import at.hannibal2.skyhanni.utils.renderables.RenderableString
 import net.minecraft.client.Minecraft
 import net.minecraftforge.fml.common.eventhandler.SubscribeEvent
 import kotlin.time.Duration.Companion.seconds
@@ -42,7 +43,7 @@ object FishingTimer {
     private val mobDespawnTime = mutableMapOf<Mob, SimpleTimeMark>()
 
     private var lastSeaCreatureFished = SimpleTimeMark.farPast()
-    private var display: String? = null
+    private var display = RenderableString()
     private var lastNameFished: String? = null
 
     private var babyMagmaSlugsToFind = 0
@@ -174,7 +175,7 @@ object FishingTimer {
     private fun updateInfo() {
         currentCount = mobDespawnTime.size
         startTime = mobDespawnTime.values.maxByOrNull { it.passedSince() } ?: SimpleTimeMark.farPast()
-        display = createDisplay()
+        display.text = updateDisplay()
     }
 
     private fun updateLocation(): Boolean {
@@ -205,8 +206,7 @@ object FishingTimer {
         if (!rightLocation) return
         if (currentCount == 0) return
         if (!FishingAPI.isFishing()) return
-
-        display = createDisplay()
+        display.text = updateDisplay()
     }
 
     @SubscribeEvent
@@ -216,11 +216,10 @@ object FishingTimer {
         if (currentCount == 0) return
         if (!FishingAPI.isFishing()) return
 
-        val text = display ?: return
-        config.pos.renderString(text, posLabel = "BarnTimer")
+        config.pos.renderRenderable(display, posLabel = "BarnTimer")
     }
 
-    private fun createDisplay(): String {
+    private fun updateDisplay(): String {
         val passedSince = startTime.passedSince()
         val timeColor = if (passedSince > config.alertTime.seconds) "§c" else "§e"
         val timeFormat = passedSince.format(TimeUnit.MINUTE)
@@ -252,7 +251,7 @@ object FishingTimer {
         mobDespawnTime.clear()
         recentMobs.clear()
         babyMagmaSlugsToFind = 0
-        display = null
+        display.clear()
         lastMagmaSlugLocation = null
         lastMagmaSlugTime = SimpleTimeMark.farPast()
         recentBabyMagmaSlugs.clear()

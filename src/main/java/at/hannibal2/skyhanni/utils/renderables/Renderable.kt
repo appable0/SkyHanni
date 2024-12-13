@@ -427,19 +427,7 @@ interface Renderable {
             color: Color = Color.WHITE,
             horizontalAlign: HorizontalAlignment = HorizontalAlignment.LEFT,
             verticalAlign: VerticalAlignment = VerticalAlignment.CENTER,
-        ) = object : Renderable {
-
-            override val width by lazy { (Minecraft.getMinecraft().fontRendererObj.getStringWidth(text) * scale).toInt() + 1 }
-            override val height = (9 * scale).toInt() + 1
-            override val horizontalAlign = horizontalAlign
-            override val verticalAlign = verticalAlign
-
-            val inverseScale = 1 / scale
-
-            override fun render(posX: Int, posY: Int) {
-                RenderableUtils.renderString(text, scale, color, inverseScale)
-            }
-        }
+        ) = RenderableString(text, scale, color, horizontalAlign, verticalAlign)
 
         fun wrappedString(
             text: String,
